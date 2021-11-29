@@ -87,7 +87,7 @@ class ReportController extends Controller
         
         $query = DB::select("select * from upspeed_new where status_oplang = 1 and created between '$tgl_prev' and '$tgl_now'");
         $nama = 'Report Sukses '.$tgl_prev.' - '.$tgl_now.'.xlsx';
-        fastexcel($query)->export('public/assets/'.$nama);
+        fastexcel($query)->export(public_path('assets/'.$nama));
         
         $pathToFile = public_path('assets/'.$nama);
         $tempImage = tempnam(sys_get_temp_dir(), $nama);
@@ -106,7 +106,7 @@ class ReportController extends Controller
         
         $query = DB::select("select * from upspeed_new where status_oplang = 2 and created between '$tgl_prev' and '$tgl_now'");
         $nama = 'Report Anomali '.$tgl_prev.' - '.$tgl_now.'.xlsx';
-        fastexcel($query)->export('public/assets/'.$nama);
+        fastexcel($query)->export(public_path('assets/'.$nama));
         
         $pathToFile = public_path('assets/'.$nama);
         $tempImage = tempnam(sys_get_temp_dir(), $nama);

@@ -109,6 +109,7 @@ class FormController extends Controller
                 WHERE A.HP = '$nomor_hp'
         ) A LEFT JOIN OFFERS B ON A.OFFER_ID = B.ID
             LEFT JOIN SPEEDS C ON B.SPEED_ID = C.ID
+            WHERE ND_INTERNET IS NOT NULL
             ORDER BY BULAN_TAGIHAN DESC
         ");
         

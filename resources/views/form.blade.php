@@ -15,6 +15,7 @@
     <meta charset="utf-8">
 
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -599,23 +600,23 @@
                     success:function(res){
 
                       if(res.status == 200){
-                        $('#nama_pelanggan').val(res.data[0].nama)
+                        $('#nama_pelanggan').val(res.data.nama)
                         // $('#email_pelanggan').val('dummy');
-                        var selisih  = res.data[0].harga * 1.1;
-                        var estimasi_tag = res.data[0].tagihan + parseInt((selisih.toFixed(0)));
+                        var selisih  = res.data.harga * 1.1;
+                        var estimasi_tag = res.data.tagihan + parseInt((selisih.toFixed(0)));
                         console.log(estimasi_tag);
-                        $('#nomor_inet').val(res.data[0].nd_internet)
-                        $('#cur_speed').val(res.data[0].speed)
-                        $('#price').val(res.data[0].harga)
-                        $('#price_sep').html(numberFormat(res.data[0].harga))
-                        $("#cwitel").val(res.data[0].cwitel)
-                        $('#up_to_speed').val(res.data[0].up_speed)
-                        $('#tag_bln_ini').val(res.data[0].tagihan)
-                        $('#tag_bln_ini_sep').html(numberFormat(res.data[0].tagihan))
+                        $('#nomor_inet').val(res.data.nd_internet)
+                        $('#cur_speed').val(res.data.speed)
+                        $('#price').val(res.data.harga)
+                        $('#price_sep').html(numberFormat(res.data.harga))
+                        $("#cwitel").val(res.data.cwitel)
+                        $('#up_to_speed').val(res.data.up_speed)
+                        $('#tag_bln_ini').val(res.data.tagihan)
+                        $('#tag_bln_ini_sep').html(numberFormat(res.data.tagihan))
                         $("#estimasi_tag").val(estimasi_tag)
                         $("#estimasi_tag_sep").html(numberFormat(estimasi_tag))
-                        $("#nama_paket").val(res.data[0].penawaran)
-                        $("#bulan_tagihan").html(bulanTagihan(res.data[0].bulan_tagihan))
+                        $("#nama_paket").val(res.data.penawaran)
+                        $("#bulan_tagihan").html(bulanTagihan(res.data.bulan_tagihan))
                       }else{
                       
                         alert(res.message);
